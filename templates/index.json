@@ -69,7 +69,7 @@
         "secondary_background": false,
         "modal_enabled": true,
         "modal_once_per_customer": false,
-        "modal_show_image": false,
+        "modal_show_image": true,
         "modal_heading": "COMPLETE YOUR PURCHASE",
         "modal_products": [
           "cintura-ecosuede-blu",
