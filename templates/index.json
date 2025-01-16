@@ -67,8 +67,8 @@
         "product": "abito-finestrato-antracite-regular",
         "color_scheme": "",
         "secondary_background": false,
-        "modal_enabled": false,
-        "modal_once_per_customer": false,
+        "modal_enabled": true,
+        "modal_once_per_customer": true,
         "modal_show_image": true,
         "modal_heading": "COMPLETE YOUR PURCHASE",
         "modal_products": [
