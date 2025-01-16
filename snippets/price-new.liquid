@@ -1,0 +1,55 @@
+{% comment %}
+  Renders product price
+
+  Accepts:
+  - product: {Object} main product
+
+  Usage:
+  {% render 'price-new', product: product %}
+{% endcomment %}
+
+<style>
+    .price-new {
+        display: flex;
+        gap: 10px;
+
+        font-family: Inter;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    }
+
+    .price-new__compare-at {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+        text-decoration-line: line-through;
+        color: #666666;
+        margin: 0;
+    }
+
+    .price-new__regular {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: left;
+        color: #05117F;
+        margin: 0;
+    }
+</style>
+
+
+<div class="price-new">
+    {%- if product.compare_at_price > product.price -%}
+        <p class="price-new__regular">
+            {{ cart.currency.symbol }} {{ product.price | money_without_currency }}
+        </p>
+        <p class="price-new__compare-at">
+            {{ cart.currency.symbol }} {{ product.compare_at_price | money_without_currency }}
+        </p>
+    {%- else -%}
+        <p class="price-new__regular">
+            {{ cart.currency.symbol }} {{ product.price | money_without_currency }}
+        </p>
+    {%- endif -%}
+</div>

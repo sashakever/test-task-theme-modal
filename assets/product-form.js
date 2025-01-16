@@ -6,6 +6,7 @@ if (!customElements.get('product-form')) {
         super();
 
         this.form = this.querySelector('form');
+        this.promoModal = document.querySelector('#promo-modal');
         this.variantIdInput.disabled = false;
         this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
@@ -15,17 +16,33 @@ if (!customElements.get('product-form')) {
         if (document.querySelector('cart-drawer')) this.submitButton.setAttribute('aria-haspopup', 'dialog');
 
         this.hideErrors = this.dataset.hideErrors === 'true';
-      }
+      };
 
       onSubmitHandler(evt) {
         evt.preventDefault();
         if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
 
+        if (this.promoModal) {
+            const once = this.promoModal.getAttribute('once');
+            const key = 'promoModal';
+            const storedValue = sessionStorage.getItem(key);
+            if (once === 'true') {
+                if (!storedValue || storedValue !== 'true') {
+                    this.promoModal.setAttribute('active', 'true');
+                    sessionStorage.setItem(key, 'true');
+                    return;
+                }
+            } else {
+                this.promoModal.setAttribute('active', 'true');
+                return;
+            }
+        }
+
         this.handleErrorMessage();
 
         this.submitButton.setAttribute('aria-disabled', true);
         this.submitButton.classList.add('loading');
-        this.querySelector('.loading__spinner').classList.remove('hidden');
+        this.querySelector('.loading__spinner')?.classList.remove('hidden');
 
         const config = fetchConfig('javascript');
         config.headers['X-Requested-With'] = 'XMLHttpRequest';
