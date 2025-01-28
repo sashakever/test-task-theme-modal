@@ -842,6 +842,27 @@
     "featured-product": {
       "name": "Featured product",
       "blocks": {
+        "modal": {
+          "header": {
+            "content": "Modal",
+            "info": "Modal options"
+          },
+          "enable": {
+            "label": "Enable/disable modal"
+          },
+          "image": {
+            "label": "Chose image"
+          },
+          "heading": {
+            "label": "Heading"
+          },
+          "once_per_customer": {
+            "label": "Show only once per customer"
+          },
+          "products": {
+            "label": "Select products"
+          }
+        },
         "text": {
           "name": "Text",
           "settings": {
@@ -953,27 +974,6 @@
         }
       },
       "settings": {
-        "modal": {
-          "header": {
-            "content": "Modal",
-            "info": "Modal options"
-          },
-          "enable": {
-            "label": "Enable/disable modal"
-          },
-          "image": {
-            "label": "Show product image"
-          },
-          "heading": {
-            "label": "Heading"
-          },
-          "once_per_customer": {
-            "label": "Show only once per customer"
-          },
-          "products": {
-            "label": "Select products"
-          }
-        },
         "product": {
           "label": "Product"
         },

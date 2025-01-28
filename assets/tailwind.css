@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tw-button {
+  @apply tw-h-[44px] tw-flex tw-items-center tw-justify-center tw-px-10 tw-py-2.5 tw-font-normal tw-text-[16px] tw-cursor-pointer tw-transition-all tw-duration-300 hover:tw-divide-opacity-80
+}
+

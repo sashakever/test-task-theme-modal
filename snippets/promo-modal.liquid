@@ -5,214 +5,55 @@
   - product: {Object} main product
   - products: {Object} additional products
   - heading: {String} Heading text
-  - show_image: {Boolean} Show filtering when true
+  - image: {Image} Modal image
   - once: {Boolean} Show only once per customer
 
   Usage:
   {% render 'promo-modal', product: product, products: products, heading: "heading", show_image: true, once: true %}
 {% endcomment %}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-
 {% assign save_price = '130' %}
 
-<style>
-
-    .promo-modal {
-        border: 1px solid #F5F5F5;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin: 20px;
-
-        font-family: 'Inter';
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-    }
-
-    .promo-modal__media img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    .promo-modal__media {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        aspect-ratio: 1.5;
-        display: flex;
-        flex: 1 1 auto;
-    }
-
-    .promo-modal__content.promo-content {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 32px;
-        flex-shrink: 0;
-    }
-
-    .promo-content__product-title span {
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 20px;
-    }
-
-    .promo-content__product-title {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 20px;
-        text-align: left;
-        color: #464646;
-        margin: 0;
-    }
-
-    .promo-content__save-price span {
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 24px;
-    }
-
-    .promo-content__save-price {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 20px;
-        text-align: left;
-        margin: 0;
-    }
-    .promo-content__heading {
-        width: 90%;
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 24px;
-        text-align: left;
-        color: #05117F;
-        margin: 0;
-    }
-
-    .promo-content__products {
-        flex: 1 1 auto;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .promo-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .promo-button {
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 40px 10px 40px;
-
-        font-size: 16px;
-        line-height: 24px;
-
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .promo-button:hover {
-        opacity: 0.8;
-    }
-
-    .promo-buttons__add-to-cart {
-        background: #05117F;
-        flex-shrink: 0;
-
-        font-weight: 700;
-        color: #E8E8E8;
-    }
-
-    .promo-buttons__continue-to-cart {
-        width: 100%;
-        border: 1px solid #05117F;
-        padding: 10px 40px 10px 40px;
-
-        font-weight: 500;
-        color: #05117F;
-    }
-
-    @media (min-width: 1024px) {
-        .promo-modal {
-            height: 518px;
-            padding: 40px;
-            flex-direction: row;
-            gap: 10px;
-        }
-
-        .promo-modal__media {
-            width: 417px;
-            height: 100%;
-            aspect-ratio: 0.95;
-        }
-
-        .promo-modal__content.promo-content {
-            width: 417px;
-            height: 100%;
-            aspect-ratio: 0.95;
-        }
-
-        .promo-buttons {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-        }
-    }
-
-</style>
-
-<cta-modal id="promo-modal" active="false" once="{{ once }}" style="display: none">
+<cta-modal id="promo-modal" active="true" once="{{ once }}" style="display: none">
 
 
-    <div slot="modal" class="promo-modal">
-        {% if show_image %}
-            <div class="promo-modal__media">
-                {{
-                product.featured_media.preview_image
-                | image_url: width: 416
-                | image_tag:
-                loading: 'lazy',
-                sizes: sizes,
-                widths: '54, 74, 104, 162, 208, 324, 416',
-                alt: product.featured_media.featured_media.alt
-                | escape
-                }}
+    <div slot="modal" class="lg:tw-h-[518px] tw-border tw-border-base-200 tw-p-5 lg:tw-p-10 tw-flex tw-flex-col lg:tw-flex-row tw-gap-5 lg:tw-gap-2.5 tw-m-5 tw-font-inter">
+        {% if image != blank %}
+            <div class="tw-relative tw-size-full lg:tw-w-[417px] tw-aspect-[1.5] lg:tw-aspect-[0.95] tw-flex tw-flex-1">
+                <img
+                    src="{{ image | image_url }}"
+                    alt="{{ product.title }}"
+                    class="tw-absolute tw-top-0 tw-left-0 tw-size-full tw-object-contain"
+                >
             </div>
         {% endif %}
-        <div class="promo-modal__content promo-content">
-            <h3 class="promo-content__heading">{{ heading }}</h3>
+        <div class="tw-size-full lg:tw-w-[417px] lg:tw-h-full lg:tw-aspect-[0.95] tw-flex tw-flex-col tw-justify-between tw-gap-8 tw-shrink-0">
+            <h3 class="tw-w-[90%] tw-text-[24px] tw-text-left tw-text-blue-500 tw-font-bold tw-font-inter tw-m-0">{{ heading }}</h3>
             <div>
-                <p class="promo-content__product-title">
-                    You are trying to add <span>{{ product.title }}</span> to the cart.
+                <p class="tw-text-[14px] tw-font-normal tw-leading-tight tw-text-left tw-text-base-800 tw-m-0">
+                    You are trying to add <span class="tw-text-[20px] tw-font-bold tw-leading-none">{{ product.title }}</span> to the cart.
                 </p>
-                <p class="promo-content__save-price">
-                    Complete your look and save <span>{{ cart.currency.symbol }} {{ save_price }}!</span>
+                <p class="tw-text-[14px] tw-font-normal tw-leading-tight tw-text-left tw-m-0">
+                    Complete your look and save <span class="tw-text-[18px] tw-font-bold tw-leading-tight">{{ cart.currency.symbol }} {{ save_price }}!</span>
                 </p>
             </div>
-            <div class="promo-content__products">
+            <div class="tw-flex-1 tw-overflow-y-auto tw-flex tw-flex-col tw-gap-5">
                 {% for product_item in products %}
                     {% render 'product-item', product: product_item %}
                 {% endfor %}
             </div>
-            <div class="promo-content__buttons promo-buttons">
-                <button id="add-to-cart-{{ section.id }}" class="promo-buttons__add-to-cart promo-button" type="submit">Add to Cart</button>
-                <button id="continue-to-cart-{{ section.id }}" class="promo-buttons__continue-to-cart promo-button">Continue to the Cart</button>
+            <div class="tw-w-full tw-flex tw-flex-col lg:tw-flex-row tw-gap-2.5">
+                <button
+                    id="add-to-cart-{{ section.id }}"
+                    class="tw-button tw-text-base-250 tw-bg-blue-500 tw-font-bold tw-shrink-0"
+                    type="submit">
+                    Add to Cart
+                </button>
+                <button
+                    id="continue-to-cart-{{ section.id }}"
+                    class="tw-w-full tw-button tw-border tw-border-blue-500 tw-text-blue-500 tw-font-medium">
+                    Continue to the Cart
+                </button>
             </div>
         </div>
     </div>

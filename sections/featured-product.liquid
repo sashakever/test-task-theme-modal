@@ -5,14 +5,19 @@
   endif
 -%}
 
-{% if section.settings.modal_enabled == true and section.settings.product != blank %}
-    {% render 'promo-modal',
-    product: section.settings.product,
-    products: section.settings.modal_products,
-    heading: section.settings.modal_heading,
-    once: section.settings.modal_once_per_customer,
-    show_image: section.settings.modal_show_image %}
-{% endif %}
+{%- for block in section.blocks -%}
+    {%- case block.type -%}
+        {%- when 'modal' -%}
+          {% if block.settings.modal_enabled == true and section.settings.product != blank %}
+            {% render 'promo-modal',
+                product: section.settings.product,
+                products: block.settings.modal_products,
+                heading: block.settings.modal_heading,
+                once: block.settings.modal_once_per_customer,
+                image: block.settings.modal_image %}
+            {% endif %}
+    {% endcase %}
+{% endfor %}
 
 <product-info
   data-section="{{ section.id }}"
@@ -507,6 +512,40 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "modal",
+      "name": "t:sections.featured-product.blocks.modal.header.content",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "modal_enabled",
+          "default": true,
+          "label": "t:sections.featured-product.blocks.modal.enable.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "modal_once_per_customer",
+          "default": false,
+          "label": "t:sections.featured-product.blocks.modal.once_per_customer.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "modal_image",
+          "label": "t:sections.featured-product.blocks.modal.image.label"
+        },
+        {
+          "type": "text",
+          "id": "modal_heading",
+          "label": "t:sections.featured-product.blocks.modal.heading.label",
+          "default": "COMPLETE YOUR PURCHASE",
+        },
+        {
+          "type": "product_list",
+          "id": "modal_products",
+          "label": "t:sections.featured-product.blocks.modal.products.label",
+        }
+      ]
     },
     {
       "type": "text",
@@ -1354,40 +1393,6 @@
       "id": "secondary_background",
       "default": false,
       "label": "t:sections.featured-product.settings.secondary_background.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.featured-product.settings.modal.header.content",
-      "info": "t:sections.featured-product.settings.modal.header.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "modal_enabled",
-      "default": true,
-      "label": "t:sections.featured-product.settings.modal.enable.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "modal_once_per_customer",
-      "default": false,
-      "label": "t:sections.featured-product.settings.modal.once_per_customer.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "modal_show_image",
-      "default": true,
-      "label": "t:sections.featured-product.settings.modal.image.label"
-    },
-    {
-      "type": "text",
-      "id": "modal_heading",
-      "label": "t:sections.featured-product.settings.modal.heading.label",
-      "default": "COMPLETE YOUR PURCHASE",
-    },
-    {
-      "type": "product_list",
-      "id": "modal_products",
-      "label": "t:sections.featured-product.settings.modal.products.label",
     },
     {
       "type": "header",
