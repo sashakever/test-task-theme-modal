@@ -865,6 +865,18 @@
           "add_to_cart": {
             "label": "Add to cart text"
           },
+          "save_price": {
+            "label": "Enter save price"
+          },
+          "product_title_before": {
+            "label": "Product title before"
+          },
+          "product_title_after": {
+            "label": "Product title after"
+          },
+          "save_price_label": {
+            "label": "Save price label"
+          },
           "continue_to_cart": {
             "label": "Continue to cart text"
           }

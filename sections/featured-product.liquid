@@ -16,6 +16,10 @@
                 once: block.settings.modal_once_per_customer,
                 add_to_cart: block.settings.add_to_cart,
                 continue_to_cart: block.settings.continue_to_cart,
+                save_price: block.settings.save_price,
+                save_price_label: block.settings.save_price_label,
+                product_title_before: block.settings.product_title_before,
+                product_title_after: block.settings.product_title_after,
                 image: block.settings.modal_image %}
             {% endif %}
     {% endcase %}
@@ -544,6 +548,18 @@
         },
         {
           "type": "text",
+          "id": "product_title_before",
+          "label": "t:sections.featured-product.blocks.modal.product_title_before.label",
+          "default": "You are trying to add ",
+        },
+        {
+          "type": "text",
+          "id": "product_title_after",
+          "label": "t:sections.featured-product.blocks.modal.product_title_after.label",
+          "default": " to the cart.",
+        },
+        {
+          "type": "text",
           "id": "add_to_cart",
           "label": "t:sections.featured-product.blocks.modal.add_to_cart.label",
           "default": "Add to Cart",
@@ -553,6 +569,18 @@
           "id": "continue_to_cart",
           "label": "t:sections.featured-product.blocks.modal.continue_to_cart.label",
           "default": "Continue to the Cart",
+        },
+        {
+          "type": "text",
+          "id": "save_price_label",
+          "label": "t:sections.featured-product.blocks.modal.save_price_label.label",
+          "default": "Complete your look and save",
+        },
+        {
+          "type": "number",
+          "id": "save_price",
+          "label": "t:sections.featured-product.blocks.modal.save_price.label",
+          "default": 130
         },
         {
           "type": "product_list",

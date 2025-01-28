@@ -12,14 +12,14 @@
 <div class="tw-flex tw-gap-2.5">
     {%- if product.compare_at_price > product.price -%}
         <p class="tw-text-[18px] tw-font-bold tw-text-blue-500 tw-m-0">
-            {{ cart.currency.symbol }} {{ product.price | money_without_currency }}
+            {{ product.price | money }}
         </p>
         <p class="tw-text-[18px] tw-font-normal tw-line-through tw-text-base-750 tw-m-0">
-            {{ cart.currency.symbol }} {{ product.compare_at_price | money_without_currency }}
+            {{ product.compare_at_price | money }}
         </p>
     {%- else -%}
         <p class="tw-text-[18px] tw-font-bold tw-text-blue-500 tw-m-0">
-            {{ cart.currency.symbol }} {{ product.price | money_without_currency }}
+            {{ product.price | money }}
         </p>
     {%- endif -%}
 </div>
