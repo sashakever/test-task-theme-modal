@@ -861,6 +861,12 @@
           },
           "products": {
             "label": "Select products"
+          },
+          "add_to_cart": {
+            "label": "Add to cart text"
+          },
+          "continue_to_cart": {
+            "label": "Continue to cart text"
           }
         },
         "text": {

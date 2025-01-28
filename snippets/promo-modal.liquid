@@ -5,6 +5,8 @@
   - product: {Object} main product
   - products: {Object} additional products
   - heading: {String} Heading text
+  - add_to_cart: {String} Add to cart text
+  - continue_to_cart: {String} Continue to cart text
   - image: {Image} Modal image
   - once: {Boolean} Show only once per customer
 
@@ -47,12 +49,12 @@
                     id="add-to-cart-{{ section.id }}"
                     class="tw-button tw-text-base-250 tw-bg-blue-500 tw-font-bold tw-shrink-0"
                     type="submit">
-                    Add to Cart
+                    {{ add_to_cart }}
                 </button>
                 <button
                     id="continue-to-cart-{{ section.id }}"
                     class="tw-w-full tw-button tw-border tw-border-blue-500 tw-text-blue-500 tw-font-medium">
-                    Continue to the Cart
+                    {{ continue_to_cart }}
                 </button>
             </div>
         </div>

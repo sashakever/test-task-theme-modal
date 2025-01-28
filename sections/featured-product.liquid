@@ -14,6 +14,8 @@
                 products: block.settings.modal_products,
                 heading: block.settings.modal_heading,
                 once: block.settings.modal_once_per_customer,
+                add_to_cart: block.settings.add_to_cart,
+                continue_to_cart: block.settings.continue_to_cart,
                 image: block.settings.modal_image %}
             {% endif %}
     {% endcase %}
@@ -539,6 +541,18 @@
           "id": "modal_heading",
           "label": "t:sections.featured-product.blocks.modal.heading.label",
           "default": "COMPLETE YOUR PURCHASE",
+        },
+        {
+          "type": "text",
+          "id": "add_to_cart",
+          "label": "t:sections.featured-product.blocks.modal.add_to_cart.label",
+          "default": "Add to Cart",
+        },
+        {
+          "type": "text",
+          "id": "continue_to_cart",
+          "label": "t:sections.featured-product.blocks.modal.continue_to_cart.label",
+          "default": "Continue to the Cart",
         },
         {
           "type": "product_list",
