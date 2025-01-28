@@ -71,14 +71,13 @@
 <script>
 
     const mainProductId = "{{ product.selected_or_first_available_variant.id }}";
-    const products = [
-        {% for product_item in products %}
-        {
-            id: "{{ product_item.selected_or_first_available_variant.id }}",
+    const products = [];
+    for (let productEl of document.querySelectorAll('[data-product-id]')) {
+        products.push({
+            id: productEl.getAttribute('data-product-id'),
             quantity: 1
-        },
-        {% endfor %}
-    ];
+        });
+    }
     const cartCountElement = document.querySelector('.cart-count-bubble span');
     const promoModal = document.getElementById('promo-modal');
 

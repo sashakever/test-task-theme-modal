@@ -8,7 +8,7 @@
   {% render 'product-item', product: product %}
 {% endcomment %}
 
-<a class="tw-flex tw-gap-2.5" href="/products/{{ product.handle }}" target="_blank">
+<a data-product-id="{{ product.selected_or_first_available_variant.id }}" class="tw-flex tw-gap-2.5" href="/products/{{ product.handle }}" target="_blank">
     <div class= "tw-w-[88px] tw-h-[100px] tw-relative">
         <img
             src="{{ product.featured_media.preview_image | image_url }}"
