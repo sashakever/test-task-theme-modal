@@ -809,6 +809,11 @@ video {
     gap: 0.625rem;
   }
 
+  .lg\:tw-object-top{
+    -o-object-position: top;
+       object-position: top;
+  }
+
   .lg\:tw-p-10{
     padding: 2.5rem;
   }
