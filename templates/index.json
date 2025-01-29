@@ -52,6 +52,25 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "modal_jixxag": {
+          "type": "modal",
+          "settings": {
+            "modal_enabled": true,
+            "modal_once_per_customer": false,
+            "modal_image": "shopify://shop_images/Image.png",
+            "modal_heading": "COMPLETE YOUR PURCHASE",
+            "product_title_before": "You are trying to add",
+            "product_title_after": "to the cart.",
+            "add_to_cart": "Add to Cart",
+            "continue_to_cart": "Continue to the Cart",
+            "save_price_label": "Complete your look and save",
+            "save_price": 130,
+            "modal_products": [
+              "cintura-ecosuede-blu",
+              "giacca-da-abito-effetto-flanella-destrutturata-grigio"
+            ]
+          }
         }
       },
       "block_order": [
@@ -61,20 +80,13 @@
         "variant_picker_ffdTUN",
         "quantity_selector_akYYjj",
         "buy_buttons_XzxAAk",
-        "share_cHzkEw"
+        "share_cHzkEw",
+        "modal_jixxag"
       ],
       "settings": {
         "product": "abito-finestrato-antracite-regular",
         "color_scheme": "",
         "secondary_background": false,
-        "modal_enabled": true,
-        "modal_once_per_customer": false,
-        "modal_show_image": true,
-        "modal_heading": "COMPLETE YOUR PURCHASE",
-        "modal_products": [
-          "cintura-ecosuede-blu",
-          "giacca-da-abito-effetto-flanella-destrutturata-grigio"
-        ],
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
