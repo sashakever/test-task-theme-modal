@@ -17,15 +17,15 @@
   {% render 'promo-modal', product: product, products: products, heading: "heading", show_image: true, once: true %}
 {% endcomment %}
 
-<cta-modal id="promo-modal" active="true" once="{{ once }}" style="display: none">
+<cta-modal id="promo-modal" active="false" once="{{ once }}" style="display: none">
 
-    <div slot="modal" class="lg:tw-h-[518px] tw-border tw-border-base-200 tw-p-5 lg:tw-p-10 tw-flex tw-flex-col lg:tw-flex-row tw-gap-5 lg:tw-gap-2.5 tw-m-5 tw-font-inter">
+    <div slot="modal" class="lg:tw-h-[518px] tw-border tw-border-base-200 tw-p-5 lg:tw-p-10 tw-flex tw-flex-col lg:tw-flex-row tw-gap-5 tw-m-5 tw-font-inter">
         {% if image != blank %}
             <div class="tw-relative tw-size-full lg:tw-w-[417px] tw-aspect-[1.5] lg:tw-aspect-[0.95] tw-flex tw-flex-1">
                 <img
                     src="{{ image | image_url }}"
                     alt="{{ product.title }}"
-                    class="tw-absolute tw-top-0 tw-left-0 tw-size-full tw-object-contain"
+                    class="tw-absolute tw-top-0 tw-left-0 tw-size-full tw-object-cover tw-object-top"
                 >
             </div>
         {% endif %}
